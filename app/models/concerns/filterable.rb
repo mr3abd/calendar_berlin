@@ -5,6 +5,7 @@ module Filterable
     def filter(filtering_params)
       results = where(nil)
       filtering_params.each do |key, value|
+        p value
         results = results.public_send("filter_by_#{key}", value) if value.present?
       end
       results

@@ -7,6 +7,6 @@ class EventController < ApplicationController
   private
 
   def filtering_params
-    params.slice(:title, :less_time, :ratings, :category)
+    params.slice(:title, :location, :start_date, :end_date, :category)
   end
 end

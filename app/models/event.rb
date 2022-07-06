@@ -27,10 +27,11 @@ class Event < ApplicationRecord
 
   #Scopes
   scope :filter_by_title, ->(title) { where('title like ?', "%#{sanitize_sql_like(title)}%") }
-  scope :filter_by_category, ->(category) { where(category: Category.where('title like ?', "%#{category}%")) }
-  scope :filter_by_location, ->(location) { where(location: Location.where('title like ?', "%#{location}%")) }
-  scope :filter_by_location, ->(data_source) { where(data_source: DataSource.where('title like ?', "%#{data_source}%")) }
-  scope :filter_by_dates, ->(dates) { where(start_date: dates[:start_date].., end_date: ..dates[:end_date]) }
+  scope :filter_by_category, ->(category) { where(category: Category.where('title like ?', "%#{sanitize_sql_like(category)}%")) }
+  scope :filter_by_location, ->(location) { where(location: Location.where('title like ?', "%#{sanitize_sql_like(location)}%")) }
+  scope :filter_by_data_source, ->(data_source) { where(data_source: DataSource.where('title like ?', "%#{sanitize_sql_like(data_source)}%")) }
+  scope :filter_by_start_date, ->(start_date) { where(start_date: start_date..) }
+  scope :filter_by_end_date, ->(end_date) { where(end_date: ..end_date) }
 
   # Relationship
   belongs_to :data_source
@@ -40,6 +41,9 @@ class Event < ApplicationRecord
   # Make url as slug to not repat any data
   validates :url, presence: true, uniqueness: true
 
+  def full_dates
+    "#{start_date&.strftime('%F')} - #{end_date&.strftime('%F')}"
+  end
   def self.actives_dependency
     # underscore for attributes
     [Location, Category, DataSource]

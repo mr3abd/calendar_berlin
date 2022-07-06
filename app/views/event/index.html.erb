@@ -1,2 +1,24 @@
-<h1>Event#index</h1>
-<p>Find me in app/views/event/index.html.erb</p>
+<%= render "header" %>
+
+<%= form_tag(root_path, method: 'get') do %>
+  <%= text_field_tag(:title, params[:title] , class: "form-control" , placeholder: "Need search by title") %>
+  <%= text_field_tag(:category, params[:category] , class: "form-control", placeholder: "Need search by category") %>
+  <%= text_field_tag(:location, params[:location] , class: "form-control", placeholder: "Need search by Location") %>
+<!--  <div class="container">-->
+<!--    <div class="row">-->
+<!--      <div class="col-sm">-->
+<!--        <p>From</p>-->
+        <%#= date_field(:start_date, params[:start_date]&.first , class: "form-control" ) %>
+<!--      </div>-->
+<!--      <div class="col-sm">-->
+<!--        <p>To</p>-->
+        <%#= date_field(:end_date, params[:end_date]&.first, class: "form-control" ) %>
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+  <%= submit_tag "Search", class: "btn btn-secondary" %>
+<% end %>
+
+
+<%= render "events" , events: @events %>
+<%== pagy_bootstrap_nav(@pagy) %>
