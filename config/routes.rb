@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "event#index"
+  post 'seed_data', to: 'event#seed_data'
 end

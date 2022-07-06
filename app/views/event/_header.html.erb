@@ -3,8 +3,10 @@
   <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
       <h1 class="fw-light">Welcome to Events Engine</h1>
-      <p class="lead text-muted">you can filter with Calendars in Berlin .</p>
-
+      <p class="lead text-muted">you can filter with Calendars in Berlin . (Should Handle JobBackgorund Later)</p>
+      <%= form_tag(seed_data_path, method: 'post') do %>
+        <%= submit_tag "Seed updated Data from Data source", class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </section>

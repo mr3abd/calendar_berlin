@@ -3,6 +3,10 @@ class EventController < ApplicationController
     @pagy, @events = pagy(Event.filter(filtering_params))
   end
 
+  def seed_data
+    Event.seed_json_data
+  end
+
 
   private
 
