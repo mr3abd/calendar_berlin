@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Quick Engine to search for new Events from data sources
 
-Things you may want to cover:
 
-* Ruby version
+## Project Details:
 
-* System dependencies
+* Environment
 
-* Configuration
+  > Ruby 3.0.3
 
-* Database creation
+  > Rails 7.0.3
 
-* Database initialization
+  > PostgreSQL
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
